@@ -6,8 +6,18 @@ description: Get zabbix host using it's id
 enabled: true
 entry_point: test_host_get.py
 parameters:
+    zabbix_url:
+        type: string
+        description: zabbix url
+        required: true
+        position: 1
+    api_key:
+        type: string
+        description: zabbix api key
+        required: true
+        position: 2
     host_id:
         type: string
         description: id of zabbix host 
         required: true
-        position: 1
+        position: 3
