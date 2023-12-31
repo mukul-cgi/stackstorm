@@ -8,7 +8,7 @@ class TestGetHost(Action):
     api_key = "b62ffb555daf420447e17c7105b8307e85ee1962ab920692b8c5ec0e97b79dd7"
 
     def __init__(self, config):
-        super(ZabbixBaseAction, self).__init__(config)
+        super(TestGetHost, self).__init__(config)
 
         self.config = config
 
