@@ -1,0 +1,13 @@
+---
+name: test_host_get
+pack: test_zabbix
+runner_type: python-script
+description: Get zabbix host using it's id
+enabled: true
+entry_point: test_host_get.py
+parameters:
+    host_id:
+        type: string
+        description: id of zabbix host 
+        required: true
+        position: 1
