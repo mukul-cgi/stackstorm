@@ -3,5 +3,9 @@ test_zabbix:
   type: "array"
   description: "A list of device UIDs to poll metrics for."
   items:
-    type: "string"
+    type: "object"
+    properties:
+      api_key:
+        description: "Your access token secret."
+        type: "string"
   required: true
