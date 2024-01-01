@@ -11,11 +11,6 @@ parameters:
         description: zabbix url
         required: true
         position: 1
-    api_key:
-        type: string
-        description: zabbix api key
-        required: true
-        position: 2
     host_id:
         type: string
         description: id of zabbix host 

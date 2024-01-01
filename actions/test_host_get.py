@@ -8,7 +8,7 @@ class TestGetHost(Action):
         self.config = config
         
 
-    def run(self, zabbix_url, api_key, host_id):
+    def run(self, zabbix_url, host_id):
         params = {"hostids": host_id}
         data = {"jsonrpc": "2.0", "method": "host.get", "params": params, "id": 1, "auth": self.config['test_zabbix']['api_key']}
 
