@@ -6,9 +6,9 @@ description: Get zabbix host using it's id
 enabled: true
 entry_point: test_host_get.py
 parameters:
-    zabbix_url:
+    customer_id:
         type: string
-        description: zabbix url
+        description: customer id
         required: true
         position: 1
     host_id:

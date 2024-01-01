@@ -5,6 +5,12 @@ test_zabbix:
   items:
     type: "object"
     properties:
+      customer_id:
+        description: "Customer id."
+        type: "string"
+      zabbix_url:
+        description: "zabbix api url."
+        type: "string"  
       api_key:
         description: "Your access token secret."
         type: "string"
