@@ -15,4 +15,4 @@ parameters:
         type: string
         description: id of zabbix host 
         required: true
-        position: 3
+        position: 2
