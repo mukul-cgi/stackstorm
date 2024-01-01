@@ -1,11 +1,7 @@
 ---
 test_zabbix:
-  description: Configuration to authenticate with Zabbix Server
-  type: object
+  type: "array"
+  description: "A list of device UIDs to poll metrics for."
+  items:
+    type: "string"
   required: true
-  additionalProperties: false
-  properties:
-    api_key:
-      type: string
-      required: true
-      secret: true
