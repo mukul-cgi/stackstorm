@@ -1,0 +1,11 @@
+---
+test_zabbix:
+  description: Configuration to authenticate with Zabbix Server
+  type: object
+  required: true
+  additionalProperties: false
+  properties:
+    api_key:
+      type: string
+      required: true
+      secret: true
