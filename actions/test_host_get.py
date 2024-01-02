@@ -2,7 +2,7 @@ import requests
 import json
 from st2common.runners.base_action import Action
 
-class TestGetHost():
+class TestGetHost(Action):
     def __init__(self, config):
         super().__init__(config)
         self.config = config
