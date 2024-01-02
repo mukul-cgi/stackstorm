@@ -4,8 +4,8 @@ from st2common.runners.base_action import Action
 
 class TestGetHost(Action):
     def __init__(self, config):
-        super().__init__(config)
-        
+#        super().__init__(config)
+        self.config = config
 
     def run(self, customer_id, host_id):
         
@@ -18,6 +18,6 @@ class TestGetHost(Action):
         data = {"jsonrpc": "2.0", "method": "host.get", "params": params, "id": 1, "auth": api_key}
 
         data = json.dumps(data)
-        
+
         output = requests.get(url=zabbix_url, data=data, headers={'Content-Type': 'application/json-rpc'} )
         return output.json()
