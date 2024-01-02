@@ -1,8 +1,8 @@
 import requests
 import json
-from st2common.runners.base_action import Action
+#from st2common.runners.base_action import Action
 
-class TestGetHost(Action):
+class TestGetHost():
     def __init__(self, config):
 #        super().__init__(config)
         self.config = config
