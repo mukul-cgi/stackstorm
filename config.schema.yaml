@@ -8,10 +8,13 @@ test_zabbix:
       customer_id:
         description: "Customer id."
         type: "string"
+        required: true
       zabbix_url:
         description: "zabbix api url."
-        type: "string"  
+        type: "string"
+        required: true  
       api_key:
         description: "Your access token secret."
         type: "string"
+        required: true
   required: true
