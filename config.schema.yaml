@@ -1,7 +1,7 @@
 ---
 test_zabbix:
   type: "array"
-  description: "A list of device UIDs to poll metrics for."
+  description: "Zabbix instance info"
   items:
     type: "object"
     properties:
