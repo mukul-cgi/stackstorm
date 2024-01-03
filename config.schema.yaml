@@ -1,20 +1,23 @@
 ---
 test_zabbix:
-  type: "array"
-  description: "Zabbix instance info"
+  description: "Configuration to authenticate with Zabbix Server"
+  type: "object"
+  required: true
   items:
     type: "object"
     properties:
       customer_id:
-        description: "Customer id."
-        type: "string"
+        description: "Customer id"
+        type: "object"
         required: true
-      zabbix_url:
-        description: "zabbix api url."
-        type: "string"
-        required: true  
-      api_key:
-        description: "Your access token secret."
-        type: "string"
-        required: true
-  required: true
+        properties:
+          zabbix_url:
+            description: "zabbix api url"
+            type: "string"
+            required: true  
+          api_key:
+            description: "zabbix api token"
+            type: "string"
+            required: true
+            secret: true
+  
