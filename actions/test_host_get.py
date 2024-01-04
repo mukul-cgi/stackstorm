@@ -4,7 +4,7 @@ from lib.base import ZabbixBaseAction
 
 class TestGetHost(ZabbixBaseAction):
     def run(self, customer_id, host_id):   
-        customer_config = super().fetch_config(customer_id)
+        customer_config = fetch_config(customer_id)
         zabbix_url = customer_config['zabbix_url']
         api_key = customer_config['api_key']
 
