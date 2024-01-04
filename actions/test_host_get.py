@@ -23,5 +23,5 @@ class TestGetHost(ZabbixBaseAction):
             headers=headers,
         )
 
-        response.json()
+        return response.json()
 
