@@ -15,7 +15,7 @@ class ZabbixBaseAction(Action):
             elif 'api_key' not in customer_config:
                 raise ValueError("Zabbix token details not found in config.yaml")
         else:
-            raise ValueError("Config data for input customer id - customer_id not found in config.yaml")
+            raise ValueError(f"Config data for input customer id - {customer_id} not found in config.yaml")
         
         return { "zabbix_url": customer_config['zabbix_url'],
                  "api_key": customer_config['api_key']
