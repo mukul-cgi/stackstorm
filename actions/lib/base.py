@@ -22,12 +22,12 @@ class ZabbixBaseAction(Action):
         }
 
     def make_request(self, method, url, data):
-        data = json.dumps(data)
+        #data = json.dumps(data)
         headers={'Content-Type': 'application/json-rpc'}
         response = requests.request(
             method=method,
             url=url,
-            data=data,
+            json=data,
             headers=headers,
         )
 
