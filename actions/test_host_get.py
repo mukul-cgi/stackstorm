@@ -1,5 +1,3 @@
-import requests
-import json
 from lib.base import ZabbixBaseAction
 
 class TestGetHost(ZabbixBaseAction):
@@ -10,18 +8,7 @@ class TestGetHost(ZabbixBaseAction):
 
         params = {"hostids": host_id}
         data = {"jsonrpc": "2.0", "method": "host.get", "params": params, "id": 1, "auth": api_key}
-        data = json.dumps(data)
-        
-        return self.make_request(method="get", url=zabbix_url, data=data)
     
-    def make_request(self, method, url, data):
-        headers={'Content-Type': 'application/json-rpc'}
-        response = requests.request(
-            method=method,
-            url=url,
-            data=data,
-            headers=headers,
-        )
+        return super().make_request(method="get", url=zabbix_url, data=data)
 
-        return response.json()
 

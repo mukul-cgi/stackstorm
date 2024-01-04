@@ -1,3 +1,5 @@
+import requests
+import json
 from st2common.runners.base_action import Action
 
 class ZabbixBaseAction(Action):
@@ -18,3 +20,15 @@ class ZabbixBaseAction(Action):
         return { "zabbix_url": customer_config['zabbix_url'],
                  "api_key": customer_config['api_key']
         }
+
+    def make_request(self, method, url, data):
+        data = json.dumps(data)
+        headers={'Content-Type': 'application/json-rpc'}
+        response = requests.request(
+            method=method,
+            url=url,
+            data=data,
+            headers=headers,
+        )
+
+        return response.json()
