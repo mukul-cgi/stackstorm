@@ -1,5 +1,5 @@
 ---
-test_zabbix1:
+test_zabbix:
   description: "Configuration to authenticate with Zabbix Server"
   type: "object"
   required: true
