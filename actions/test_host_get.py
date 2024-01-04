@@ -1,15 +1,12 @@
 import requests
 import json
-from st2common.runners.base_action import Action
+from lib.base import ZabbixBaseAction
 
-class TestGetHost(Action):
-    def __init__(self, config):
-        super().__init__(config)
-        self.config = config
-
+class TestGetHost(ZabbixBaseAction):
     def run(self, customer_id, host_id):   
-        zabbix_url = self.config['test_zabbix'][customer_id]['zabbix_url']
-        api_key = self.config['test_zabbix'][customer_id]['api_key']
+        customer_config = super().fetch_config(customer_id)
+        zabbix_url = customer_config['zabbix_url']
+        api_key = customer_config['api_key']
 
         params = {"hostids": host_id}
         data = {"jsonrpc": "2.0", "method": "host.get", "params": params, "id": 1, "auth": api_key}
