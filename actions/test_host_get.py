@@ -7,8 +7,16 @@ class TestGetHost(ZabbixBaseAction):
         api_key = customer_config['api_key']
 
         params = {"hostids": host_id}
-        data = {"jsonrpc": "2.0", "method": "host.get", "params": params, "id": 1, "auth": api_key}
+        #data = {"jsonrpc": "2.0", "method": "host.get", "params": params, "id": 1, "auth": api_key}
     
-        return self.make_request(method="get", url=zabbix_url, data=data)
+        #return self.make_request(method="get", url=zabbix_url, data=data)
+    
+        return self.make_request(
+            http_method="get", 
+            api_method="host.get",
+            url=zabbix_url, 
+            params=params, 
+            auth=api_key
+            )
 
 

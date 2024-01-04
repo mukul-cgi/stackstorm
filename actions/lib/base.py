@@ -21,14 +21,15 @@ class ZabbixBaseAction(Action):
                  "api_key": customer_config['api_key']
         }
 
-    def make_request(self, method, url, data):
+    def make_request(self, http_method, api_method, params, url, auth):
         #data = json.dumps(data)
         headers={'Content-Type': 'application/json-rpc'}
+        data = {"jsonrpc": "2.0", "method": api_method, "params": params, "id": 1, "auth": auth}
         response = requests.request(
-            method=method,
+            method=http_method,
             url=url,
             json=data,
             headers=headers,
         )
-
+        
         return response.json()
