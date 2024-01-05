@@ -31,4 +31,4 @@ class ZabbixBaseAction(Action):
             headers=headers,
         )
         
-        return True if response else False 
+        return response is None 
