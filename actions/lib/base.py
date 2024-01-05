@@ -17,17 +17,16 @@ class ZabbixBaseAction(Action):
         else:
             raise ValueError(f"Config data for input customer id - {customer_id} not found in config.yaml")
         
-        return { "zabbix_url": customer_config['zabbix_url'],
-                 "api_key": customer_config['api_key']
-        }
+        self.url = customer_config['zabbix_url']
+        self.key = customer_config['api_key']
 
-    def make_request(self, http_method, api_method, params, url, auth):
+    def make_request(self, http_method, api_method, params):
         #data = json.dumps(data)
         headers={'Content-Type': 'application/json-rpc'}
-        data = {"jsonrpc": "2.0", "method": api_method, "params": params, "id": 1, "auth": auth}
+        data = {"jsonrpc": "2.0", "method": api_method, "params": params, "id": 1, "auth": self.key}
         response = requests.request(
             method=http_method,
-            url=url,
+            url=self.url,
             json=data,
             headers=headers,
         )
