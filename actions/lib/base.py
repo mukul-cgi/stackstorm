@@ -31,4 +31,4 @@ class ZabbixBaseAction(Action):
             headers=headers,
         )
         
-        return response is None 
+        return None 
