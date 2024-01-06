@@ -16,3 +16,7 @@ parameters:
         description: id of zabbix host 
         required: true
         position: 2
+    test:
+        type: boolean
+        required: False
+        default: None
