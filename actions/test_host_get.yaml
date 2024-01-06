@@ -19,5 +19,4 @@ parameters:
     test:
         type: string
         required: False
-#        default: Null
         enum: ["True", "False"]

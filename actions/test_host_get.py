@@ -1,7 +1,7 @@
 from lib.base import ZabbixBaseAction
 
 class TestGetHost(ZabbixBaseAction):
-    def run(self, customer_id, host_id, test=None):   
+    def run(self, customer_id, host_id, test):   
 #        self.fetch_config(customer_id)
 #
 #        params = {"hostids": host_id}
