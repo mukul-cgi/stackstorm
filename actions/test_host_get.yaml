@@ -20,4 +20,4 @@ parameters:
         type: string
         required: False
         default: Null
-        "enum": ["True", "False", "Null"]
+        "enum": ["True", "False"]
