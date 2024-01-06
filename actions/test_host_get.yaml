@@ -20,3 +20,4 @@ parameters:
         type: boolean
         required: False
         default: Null
+        "enum": [True, False, Null]
