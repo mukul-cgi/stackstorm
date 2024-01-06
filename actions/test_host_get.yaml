@@ -17,7 +17,7 @@ parameters:
         required: true
         position: 2
     test:
-        type: string
+        type: boolean
         required: False
         default: Null
-        "enum": ["True", "False"]
+        "enum": [true, false]
