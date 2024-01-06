@@ -11,5 +11,5 @@ class TestGetHost(ZabbixBaseAction):
 #            api_method="host.get", 
 #            params=params, 
 #            )
-        return test
+        return False if test is None else True
 
