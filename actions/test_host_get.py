@@ -11,5 +11,5 @@ class TestGetHost(ZabbixBaseAction):
 #            api_method="host.get", 
 #            params=params, 
 #            )
-        print(type(test))
+        return type(test)
 
