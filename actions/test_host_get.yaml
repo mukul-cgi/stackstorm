@@ -19,4 +19,4 @@ parameters:
     test:
         type: boolean
         required: False
-        default: None
+        default: False
