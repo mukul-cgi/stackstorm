@@ -3,8 +3,8 @@ test_zabbix:
   description: "Configuration to authenticate with Zabbix Server"
   type: "object"
   required: true
-  properties:
-    customer_id:
+  patternProperties:
+    "^.*$":
       description: "Customer id"
       type: "object"
       properties:
