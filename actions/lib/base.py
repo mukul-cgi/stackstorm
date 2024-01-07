@@ -31,11 +31,12 @@ class ZabbixBaseAction(Action):
             headers=headers,
         )
         
-        if response is not None and response.ok:
-            res = response.json()
-            if isinstance(res, dict) and "result" in res:
-                return res["result"]
-            else:
-                return res
-        else:
-            return None 
+        return response
+#        if response is not None and response.ok:
+#            res = response.json()
+#            if isinstance(res, dict) and "result" in res:
+#                return res["result"]
+#            else:
+#                return res
+#        else:
+#            return None 
