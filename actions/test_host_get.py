@@ -11,5 +11,5 @@ class TestGetHost(ZabbixBaseAction):
 #            api_method="host.get", 
 #            params=params, 
 #            )
-        return type(test)
+        return self.config
 
