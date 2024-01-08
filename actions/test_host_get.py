@@ -8,6 +8,6 @@ class TestGetHost(ZabbixBaseAction):
 
         return self.make_request(
             http_method="post", 
-            api_method="host.get", 
+            api_method="host.get1", 
             params=params, 
             )
