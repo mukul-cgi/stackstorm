@@ -4,7 +4,7 @@ class TestGetHost(ZabbixBaseAction):
     def run(self, customer_id, host_id, test):   
         self.fetch_config(customer_id)
 
-        params = {"hostids": host_id}
+        params = {"hostids11": host_id}
 
         return self.make_request(
             http_method="post", 
