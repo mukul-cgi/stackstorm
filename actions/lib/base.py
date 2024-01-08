@@ -31,7 +31,7 @@ class ZabbixBaseAction(Action):
             headers=headers,
         )
         
-        return response
+        return response.json()
 #        if response is not None and response.ok:
 #            res = response.json()
 #            if isinstance(res, dict) and "result" in res:
