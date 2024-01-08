@@ -32,7 +32,15 @@ class ZabbixBaseAction(Action):
         )
         
         #return response.json()
-        return response.ok
+        #return response.ok
+        ret = response.json()
+        if "result" in ret:
+            return ret["result"]
+        elif "error" in ret:
+            raise Exception(ret["error"])
+        else:
+            return ret
+
 #        if response is not None and response.ok:
 #            res = response.json()
 #            if isinstance(res, dict) and "result" in res:
