@@ -17,8 +17,18 @@ class ZabbixBaseAction(Action):
         else:
             raise ValueError(f"Config data for input customer id - {customer_id} not found in config.yaml")
         
-        self.url = customer_config['zabbix_url']
-        self.key = customer_config['api_key']
+        return Zabbix(customer_config['zabbix_url'], customer_config['api_key'])
+
+class Zabbix:
+    def __init__(self, url, key):
+        self.url = url
+        self.key = key
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_value, exc_traceback):
+        pass
 
     def make_request(self, http_method, api_method, params):
         #data = json.dumps(data)
@@ -31,19 +41,8 @@ class ZabbixBaseAction(Action):
             headers=headers,
         )
         
-        #return response.json()
-        #return response.ok
         ret = response.json()
         if "error" in ret:
             raise Exception(ret["error"])
         
         return ret["result"]
-
-#        if response is not None and response.ok:
-#            res = response.json()
-#            if isinstance(res, dict) and "result" in res:
-#                return res["result"]
-#            else:
-#                return res
-#        else:
-#            return None 
