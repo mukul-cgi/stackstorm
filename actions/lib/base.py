@@ -35,7 +35,7 @@ class Zabbix:
         #data = json.dumps(data)
         headers={'Content-Type': 'application/json-rpc'}
         data = {"jsonrpc": "2.0", "method": api_method, "params": params, "id": 1, "auth": self.key}
-        response = self.session.request(
+        response = requests.request(
             method=http_method,
             url=self.url,
             json=data,
