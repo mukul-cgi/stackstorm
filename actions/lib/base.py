@@ -25,16 +25,17 @@ class Zabbix:
         self.key = key
 
     def __enter__(self):
+        self.session = requests.session()
         return self
 
     def __exit__(self, exc_type, exc_value, exc_traceback):
-        pass
+        self.session.close()
 
     def make_request(self, http_method, api_method, params):
         #data = json.dumps(data)
         headers={'Content-Type': 'application/json-rpc'}
         data = {"jsonrpc": "2.0", "method": api_method, "params": params, "id": 1, "auth": self.key}
-        response = requests.request(
+        response = self.session.request(
             method=http_method,
             url=self.url,
             json=data,
