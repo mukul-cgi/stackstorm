@@ -26,7 +26,7 @@ class Zabbix:
 
     def __enter__(self):
         self.session = requests.session()
-        return self
+        #return self
 
     def __exit__(self, exc_type, exc_value, exc_traceback):
         self.session.close()
