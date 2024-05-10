@@ -1,4 +1,5 @@
 import pika
+import time
 from st2common.runners.base_action import Action
 
 class TestGetHost(Action):
@@ -21,5 +22,6 @@ class TestGetHost(Action):
             properties=pika.BasicProperties(delivery_mode=2)
         )
         connection.close()
+        time.sleep(20)
         return f"[x] Sent {message}"
         
