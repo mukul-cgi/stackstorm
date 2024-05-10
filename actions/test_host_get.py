@@ -21,5 +21,5 @@ class TestGetHost(Action):
             properties=pika.BasicProperties(delivery_mode=2)
         )
         connection.close()
-        print(" [x] Sent %r" % message)
+        return f"[x] Sent {message}"
         
