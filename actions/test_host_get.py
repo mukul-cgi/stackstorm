@@ -3,7 +3,7 @@ import sys
 from st2common.runners.base_action import Action
 
 class TestGetHost(Action):
-    def run():   
+    def run(self):   
         credentials = pika.PlainCredentials("test", "test")
         parameters = pika.ConnectionParameters('748959631f5b',
                                            5672,
