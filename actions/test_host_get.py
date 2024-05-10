@@ -1,5 +1,4 @@
 import pika
-import sys
 from st2common.runners.base_action import Action
 
 class TestGetHost(Action):
@@ -13,7 +12,7 @@ class TestGetHost(Action):
         channel = connection.channel()
         channel.queue_declare(queue='task_queue1', durable=True)
         
-        message = ' '.join(sys.argv[1:]) or "Hello World!"
+        message = "Hello World!"
         
         channel.basic_publish(
             exchange='',
