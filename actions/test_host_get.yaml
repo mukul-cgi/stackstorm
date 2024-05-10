@@ -1,6 +1,6 @@
 ---
 name: test_host_get
-pack: test_zabbix
+pack: test
 runner_type: python-script
 description: Get zabbix host using it's id
 enabled: true
