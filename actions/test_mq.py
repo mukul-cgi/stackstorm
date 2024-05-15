@@ -2,7 +2,7 @@ import pika
 import time
 from st2common.runners.base_action import Action
 
-class TestGetHost(Action):
+class TestMq(Action):
     def run(self):   
         credentials = pika.PlainCredentials("test", "test")
         parameters = pika.ConnectionParameters('748959631f5b',
