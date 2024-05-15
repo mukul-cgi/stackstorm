@@ -1,0 +1,7 @@
+---
+name: test_mq
+pack: test
+runner_type: python-script
+description: test mq
+enabled: true
+entry_point: test_mq.py
