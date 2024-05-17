@@ -4,11 +4,11 @@ from st2common.runners.base_action import Action
 
 class TestMq(Action):
     def run(self):   
-        credentials = pika.PlainCredentials("test", "test")
+#        credentials = pika.PlainCredentials("test", "test")
         parameters = pika.ConnectionParameters('748959631f5b',
                                            5672,
                                            '/',
-                                           credentials)
+                                           )
         connection = pika.BlockingConnection(parameters)
         channel = connection.channel()
         channel.queue_declare(queue='task_queue1', durable=True)
