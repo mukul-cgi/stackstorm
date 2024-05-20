@@ -30,7 +30,7 @@ class TestMq(Action):
 #        connection.close()
 #        time.sleep(20)
 #        return f"[x] Sent {message}"
-        exchange = Exchange('amq.direct', type="direct")
+        exchange = Exchange('', type="direct")
         
         publisher = PoolPublisher()
         publisher.publish(payload='test_message', exchange=exchange, routing_key='task_queue1')
