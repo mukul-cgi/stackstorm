@@ -36,6 +36,4 @@ class TestMq(Action):
         eventlet.sleep(0.5)
         return "message sent"
 
-
-def main(exchange, routing_key, payload):
          
