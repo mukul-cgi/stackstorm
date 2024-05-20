@@ -32,7 +32,7 @@ class TestMq(Action):
 #        return f"[x] Sent {message}"
 #        exchange = Exchange(exchange, type="topic")
         publisher = PoolPublisher()
-        publisher.publish(payload='test_message', exchange='', routing_key='task_queue1')
+        publisher.publish(payload='test_message', exchange='amq.direct', routing_key='task_queue1')
         eventlet.sleep(0.5)
         return "message sent"
 
