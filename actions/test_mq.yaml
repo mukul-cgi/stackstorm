@@ -5,3 +5,9 @@ runner_type: python-script
 description: test mq
 enabled: true
 entry_point: test_mq.py
+parameters:
+    message:
+        description: Message to be added to queue.
+        type: string
+        required: True
+        position: 1
