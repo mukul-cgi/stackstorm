@@ -21,7 +21,7 @@ from random import randint
 from kombu import Connection, Exchange, Queue, Consumer
 
 def process_message(body, message):
-      print(“Fetched message, the body is {}”.format(body))
+      print(“The body is {}”.format(body))
       message.ack()
         
 class HelloSensor(Sensor):  
