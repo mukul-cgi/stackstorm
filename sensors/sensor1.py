@@ -18,20 +18,25 @@ import eventlet
 from st2reactor.sensor.base import Sensor
 import os 
 from random import randint
+from kombu import Connection, Exchange, Queue, Consumer
 
-class HelloSensor(Sensor):
+def process_message(body, message):
+      print(“Fetched message, the body is {}”.format(body))
+      message.ack()
+        
+class HelloSensor(Sensor):  
     def setup(self):
-        pass
+        rabbit_url = “amqp://guest:guest@rabbitmq:5672”
+        self.conn = Connection(rabbit_url)
+        exchange = Exchange(“”, type=”direct”)
+        self.queue = Queue(name=”task_queue2”, exchange=exchange, routing_key=”task_queue2”)
 
     def run(self):
         while True:
 #            payload = {"greeting": "Yo, StackStorm!"}
 #            self.sensor_service.dispatch(trigger="test.event2", payload=payload)
-            dir = f"/home/test{randint(0,1000)}"
-            try:
-                os.mkdir(dir)
-            except Exception:
-                pass
+            with Consumer(self.conn, queues=self.queue, callbacks=[process_message], accept=["text/plain"]): 
+            
             eventlet.sleep(10)
 
     def cleanup(self):
