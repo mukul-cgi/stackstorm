@@ -23,6 +23,9 @@ from kombu import Connection, Exchange, Queue, Consumer
 
         
 class HelloSensor(Sensor):  
+    def __init__(self, sensor_service, config):
+        super(HelloSensor, self).__init__(sensor_serice=sensor_service, config=config)
+        self._logger = self.sensor_service.get_logger(name=self.__class__.__name__)
     def setup(self):
         rabbit_url = "amqp://guest:guest@rabbitmq:5672"
         self.conn = Connection(rabbit_url)
@@ -33,13 +36,14 @@ class HelloSensor(Sensor):
 
     def process_message(self, body, message):
         print("body is {body}")
-        self._logger.info(f"message body {body}...")
+#        payload = {"message_body": "{body}"}
+#        self.sensor_service.dispatch(trigger="test.event2", payload=payload)
+        self.logger.debug(f"message body - {body"}
         message.ack()
 
     def run(self):
         while True:
-#            payload = {"greeting": "Yo, StackStorm!"}
-#            self.sensor_service.dispatch(trigger="test.event2", payload=payload)
+
             self.conn.drain_events()
             eventlet.sleep(10)
 
