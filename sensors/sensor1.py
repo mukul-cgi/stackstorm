@@ -24,7 +24,7 @@ from kombu import Connection, Exchange, Queue, Consumer
         
 class HelloSensor(Sensor):  
     def __init__(self, sensor_service, config):
-        super(HelloSensor, self).__init__(sensor_serice=sensor_service, config=config)
+        super(HelloSensor, self).__init__(sensor_service=sensor_service, config=config)
         self._logger = self.sensor_service.get_logger(name=self.__class__.__name__)
     def setup(self):
         rabbit_url = "amqp://guest:guest@rabbitmq:5672"
