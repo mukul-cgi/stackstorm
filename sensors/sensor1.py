@@ -20,9 +20,7 @@ import os
 from random import randint
 from kombu import Connection, Exchange, Queue, Consumer
 
-def process_message(body, message):
-      print("body is {body}")
-      message.ack()
+
         
 class HelloSensor(Sensor):  
     def setup(self):
@@ -31,14 +29,18 @@ class HelloSensor(Sensor):
         exchange = Exchange("", type="direct")
         self.queue = Queue(name="salt_jobs", exchange=exchange, routing_key="salt_jobs")
         self.consumer = Consumer(self.conn, queues=self.queue, callbacks=[process_message], accept=['application/json', 'application/x-python-serialize', 'pickle'])
-    
+        self.consumer.consume()
+
+    def process_message(self, body, message):
+        print("body is {body}")
+        self._logger.info(f"message body {body}...")
+        message.ack()
+
     def run(self):
         while True:
 #            payload = {"greeting": "Yo, StackStorm!"}
 #            self.sensor_service.dispatch(trigger="test.event2", payload=payload)
-            self.consumer.consume()
             self.conn.drain_events()
-            
             eventlet.sleep(10)
 
     def cleanup(self):
