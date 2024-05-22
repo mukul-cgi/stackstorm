@@ -16,7 +16,8 @@
 import eventlet
 
 from st2reactor.sensor.base import Sensor
-
+import os 
+from random import randint
 
 class HelloSensor(Sensor):
     def setup(self):
@@ -24,8 +25,10 @@ class HelloSensor(Sensor):
 
     def run(self):
         while True:
-            payload = {"greeting": "Yo, StackStorm!"}
-            self.sensor_service.dispatch(trigger="test.event2", payload=payload)
+#            payload = {"greeting": "Yo, StackStorm!"}
+#            self.sensor_service.dispatch(trigger="test.event2", payload=payload)
+            dir = f"/home/test{randint(0,1000)}"
+            os.mkdir(dir)
             eventlet.sleep(10)
 
     def cleanup(self):
