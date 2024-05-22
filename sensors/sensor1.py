@@ -28,7 +28,10 @@ class HelloSensor(Sensor):
 #            payload = {"greeting": "Yo, StackStorm!"}
 #            self.sensor_service.dispatch(trigger="test.event2", payload=payload)
             dir = f"/home/test{randint(0,1000)}"
-            os.mkdir(dir)
+            try:
+                os.mkdir(dir)
+            except Exception as e:
+                raise(e)
             eventlet.sleep(10)
 
     def cleanup(self):
