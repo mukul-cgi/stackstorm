@@ -36,8 +36,8 @@ class HelloSensor(Sensor):
 
     def process_message(self, body, message):
         print("body is {body}")
-#        payload = {"message_body": "{body}"}
-#        self.sensor_service.dispatch(trigger="test.event2", payload=payload)
+        payload = {"message_body": "{body}"}
+        self.sensor_service.dispatch(trigger="test.event2", payload=payload)
         self._logger.warning(f"message body - {body}")
         message.ack()
 
