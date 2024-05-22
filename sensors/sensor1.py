@@ -26,17 +26,16 @@ def process_message(body, message):
         
 class HelloSensor(Sensor):  
     def setup(self):
-        rabbit_url = “amqp://guest:guest@rabbitmq:5672”
+        rabbit_url = "amqp://guest:guest@rabbitmq:5672"
         self.conn = Connection(rabbit_url)
-        exchange = Exchange(“”, type=”direct”)
-        self.queue = Queue(name=”salt_jobs”, exchange=exchange, routing_key=”salt_jobs”)
+        exchange = Exchange("", type="direct")
+        self.queue = Queue(name="salt_jobs", exchange=exchange, routing_key="salt_jobs")
 
     def run(self):
         while True:
 #            payload = {"greeting": "Yo, StackStorm!"}
 #            self.sensor_service.dispatch(trigger="test.event2", payload=payload)
-            with Consumer(self.conn, queues=self.queue, callbacks=[process_message], accept=["text/plain"]): 
-            
+            with Consumer(self.conn, queues=self.queue, callbacks=[process_message], accept=["text/plain"]):
             eventlet.sleep(10)
 
     def cleanup(self):
