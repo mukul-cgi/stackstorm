@@ -21,7 +21,7 @@ from random import randint
 from kombu import Connection, Exchange, Queue, Consumer
 
 def process_message(body, message):
-      print(“The body is {}”.format(body))
+      print(f“The body is {body}”)
       message.ack()
         
 class HelloSensor(Sensor):  
@@ -29,7 +29,7 @@ class HelloSensor(Sensor):
         rabbit_url = “amqp://guest:guest@rabbitmq:5672”
         self.conn = Connection(rabbit_url)
         exchange = Exchange(“”, type=”direct”)
-        self.queue = Queue(name=”task_queue2”, exchange=exchange, routing_key=”task_queue2”)
+        self.queue = Queue(name=”salt_jobs”, exchange=exchange, routing_key=”salt_jobs”)
 
     def run(self):
         while True:
