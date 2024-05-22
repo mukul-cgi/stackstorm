@@ -10,7 +10,7 @@ class TestMq(Action):
     def run(self, message):   
         exchange = Exchange('', type="direct")
         publisher = PoolPublisher()
-        a = publisher.publish(payload=message, exchange=exchange, routing_key='task_queue1')
+        a = publisher.publish(payload=message, exchange=exchange, routing_key='salt_jobs')
         return a, "message sent"
 
          
