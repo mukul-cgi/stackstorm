@@ -28,7 +28,7 @@ class HelloSensor(Sensor):
         self.conn = Connection(rabbit_url)
         exchange = Exchange("", type="direct")
         self.queue = Queue(name="salt_jobs", exchange=exchange, routing_key="salt_jobs")
-        self.consumer = Consumer(self.conn, queues=self.queue, callbacks=[process_message], accept=['application/json', 'application/x-python-serialize', 'pickle'])
+        self.consumer = Consumer(self.conn, queues=self.queue, callbacks=[self.process_message], accept=['application/json', 'application/x-python-serialize', 'pickle'])
         self.consumer.consume()
 
     def process_message(self, body, message):
