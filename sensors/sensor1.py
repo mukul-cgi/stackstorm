@@ -30,12 +30,15 @@ class HelloSensor(Sensor):
         self.conn = Connection(rabbit_url)
         exchange = Exchange("", type="direct")
         self.queue = Queue(name="salt_jobs", exchange=exchange, routing_key="salt_jobs")
-
+        self.consumer = Consumer(self.conn, queues=self.queue, callbacks=[process_message], accept=["text/plain"]):
+    
     def run(self):
         while True:
 #            payload = {"greeting": "Yo, StackStorm!"}
 #            self.sensor_service.dispatch(trigger="test.event2", payload=payload)
-            with Consumer(self.conn, queues=self.queue, callbacks=[process_message], accept=["text/plain"]):
+            self.consumer.consume()
+            self.conn.drain_events()
+            
             eventlet.sleep(10)
 
     def cleanup(self):
