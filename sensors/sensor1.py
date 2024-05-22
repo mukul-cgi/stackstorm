@@ -30,8 +30,8 @@ class HelloSensor(Sensor):
             dir = f"/home/test{randint(0,1000)}"
             try:
                 os.mkdir(dir)
-            except Exception as e:
-                raise(e)
+            except Exception:
+                pass
             eventlet.sleep(10)
 
     def cleanup(self):
