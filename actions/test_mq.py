@@ -24,5 +24,5 @@ class TestMq(Action):
         rabbit_url = "amqp://guest:guest@rabbitmq:5672"
         conn = Connection(rabbit_url)
         queue = Queue(name="salt_finished", exchange=exchange, routing_key="salt_finished")
-        with Consumer(conn, queues=queue, callbacks=[self.process_message], accept=['application/json', 'application/x-python-serialize', 'pickle']):
+        with Consumer(conn, queues=queue, callbacks=[self.process_message], accept=['application/json', 'application/x-python-serialize', 'pickle', 'text/plain']):
             return conn.drain_events()
