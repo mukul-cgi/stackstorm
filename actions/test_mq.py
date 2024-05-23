@@ -5,7 +5,7 @@ from st2common.runners.base_action import Action
 from kombu import Connection, Exchange, Consumer, Queue
 #from st2common import config
 from st2common.transport.publishers import PoolPublisher
-output = "default"
+output = []
 
 class TestMq(Action):
     def process_message(self, body, message):
@@ -14,7 +14,7 @@ class TestMq(Action):
 #        self.sensor_service.dispatch(trigger="test.event2", payload=payload, trace_tag="tag123")
         global output
         message.ack()
-        output = body
+        output.append(body)
     
     def run(self, message):   
         exchange = Exchange('', type="direct")
@@ -26,4 +26,4 @@ class TestMq(Action):
         queue = Queue(name="salt_finished", exchange=exchange, routing_key="salt_finished")
         with Consumer(conn, queues=queue, callbacks=[self.process_message], accept=['application/json', 'application/x-python-serialize', 'pickle', 'text/plain']):
             conn.drain_events()
-            return output
+        return output
