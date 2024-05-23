@@ -18,7 +18,7 @@ import eventlet
 from st2reactor.sensor.base import Sensor
 import os 
 from random import randint
-from kombu import Connection, Exchange, Queue, Consumer
+from kombu import Connection, Exchange, Queue, Consumer, Producer
 
 
         
