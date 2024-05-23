@@ -8,6 +8,6 @@ class TestRedis(Action):
  #       redis_client = redis.Redis(host='a0382acdcbda', port=6379, db=0)         
  #       redis_client.set('key', 'value')
  #       data = redis_client.get('key')
-        key = os.environ['ST2_API_KEY']
+        key = os.environ['ST2_ACTION_AUTH_TOKEN']
         return key
         
