@@ -19,6 +19,7 @@ class TestMq(Action):
     def run(self, message):   
         exchange = Exchange('', type="direct")
         publisher = PoolPublisher()
+        message = {"test": '123'}
         a = publisher.publish(payload=message, exchange=exchange, routing_key='salt_jobs')
         
         rabbit_url = "amqp://guest:guest@rabbitmq:5672"
