@@ -14,7 +14,7 @@ class TestMq(Action):
 #        self.sensor_service.dispatch(trigger="test.event2", payload=payload, trace_tag="tag123")
         global output
         message.ack()
-        return body
+        output = body
     
     def run(self, message):   
         exchange = Exchange('', type="direct")
@@ -25,4 +25,5 @@ class TestMq(Action):
         conn = Connection(rabbit_url)
         queue = Queue(name="salt_finished", exchange=exchange, routing_key="salt_finished")
         with Consumer(conn, queues=queue, callbacks=[self.process_message], accept=['application/json', 'application/x-python-serialize', 'pickle', 'text/plain']):
-            return conn.drain_events()
+            conn.drain_events()
+            return output
