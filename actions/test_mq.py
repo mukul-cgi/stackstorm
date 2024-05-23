@@ -13,7 +13,7 @@ class TestMq(Action):
 #        payload = {"message_body": "{body}"}
 #        self.sensor_service.dispatch(trigger="test.event2", payload=payload, trace_tag="tag123")
         global output
-        message.ack()
+#        message.ack()
         output.append(body)
     
     def run(self, message):   
