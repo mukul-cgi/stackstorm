@@ -1,5 +1,6 @@
 import redis
 import os
+import requests
 from st2common.runners.base_action import Action
 from st2common.transport import utils as transport_utils
 
@@ -9,5 +10,17 @@ class TestRedis(Action):
  #       redis_client.set('key', 'value')
  #       data = redis_client.get('key')
         key = os.environ['ST2_ACTION_AUTH_TOKEN']
+        base_url = os.environ['ST2_ACTION_API_URL']
+        api_url = "base_url/traces/?trace_tag=tag123"
+        headers = {
+            'Accept': 'application/json',
+            'X-Auth-Token': key
+        }
+        ret = requests.get(url=api_url, headers=headers)
+        return ret.text
+        
+
+        
+        
         return key
         
