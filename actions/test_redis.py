@@ -17,7 +17,7 @@ class TestRedis(Action):
             'X-Auth-Token': key
         }
         ret = requests.get(url=api_url, headers=headers)
-        return ret.text
+        return ret.json()
         
 
         
