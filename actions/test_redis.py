@@ -11,7 +11,7 @@ class TestRedis(Action):
  #       data = redis_client.get('key')
         key = os.environ['ST2_ACTION_AUTH_TOKEN']
         base_url = os.environ['ST2_ACTION_API_URL']
-        api_url = "base_url/traces/?trace_tag=tag123"
+        api_url = f"{base_url}/traces/?trace_tag=tag123"
         headers = {
             'Accept': 'application/json',
             'X-Auth-Token': key
