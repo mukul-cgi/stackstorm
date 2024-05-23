@@ -30,14 +30,19 @@ class HelloSensor(Sensor):
         rabbit_url = "amqp://guest:guest@rabbitmq:5672"
         self.conn = Connection(rabbit_url)
         exchange = Exchange("", type="direct")
+        self.producer = Producer(exchange=exchange, channel=self.conn.channel(), routing_key='salt_finished')    
+        finished_queue = Queue(name='salt_finished', exchange=exchange, routing_key='salt_finished')
+        finished_queue.maybe_bind(self.conn)
+        finished_queue.declare()
         self.queue = Queue(name="salt_jobs", exchange=exchange, routing_key="salt_jobs")
         self.consumer = Consumer(self.conn, queues=self.queue, callbacks=[self.process_message], accept=['application/json', 'application/x-python-serialize', 'pickle'])
         self.consumer.consume()
 
     def process_message(self, body, message):
         print("body is {body}")
-        payload = {"message_body": "{body}"}
-        self.sensor_service.dispatch(trigger="test.event2", payload=payload, trace_tag="tag123")
+#        payload = {"message_body": "{body}"}
+#        self.sensor_service.dispatch(trigger="test.event2", payload=payload, trace_tag="tag123")
+        self.producer.publish(body)
         self._logger.warning(f"message body - {body}")
         message.ack()
 
