@@ -3,7 +3,7 @@ import os
 import requests
 from st2common.runners.base_action import Action
 from st2common.transport import utils as transport_utils
-from common import test
+from lib.common import test
 
 class TestRedis(Action):
     def run(self):   
