@@ -19,7 +19,7 @@ from st2reactor.sensor.base import Sensor
 import os 
 from random import randint
 from kombu import Connection, Exchange, Queue, Consumer, Producer
-
+from st2common.transport import utils as transport_utils
 
         
 class HelloSensor(Sensor):  
