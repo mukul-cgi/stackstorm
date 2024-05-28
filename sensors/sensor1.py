@@ -15,14 +15,14 @@
 
 import eventlet
 from datetime import datetime
-from st2reactor.sensor.base import Sensor
+from st2reactor.sensor.base import PollingSensor
 import os 
 from random import randint
 from kombu import Connection, Exchange, Queue, Consumer, Producer
 from st2common.transport import utils as transport_utils
 
 data = []        
-class HelloSensor(Sensor):  
+class HelloSensor(PollingSensor):  
     def __init__(self, sensor_service, config):
         super(HelloSensor, self).__init__(sensor_service=sensor_service, config=config)
         self._logger = self.sensor_service.get_logger(name=self.__class__.__name__)
@@ -57,9 +57,13 @@ class HelloSensor(Sensor):
 #        self._logger.warning(f"message body - {body}")
         message.ack()
 
-    def run(self):
-        for each in range(0,2):
-            self.connection.drain_events()
+    def poll(self):
+        try:
+            while True
+                self.connection.drain_events(timeout=2)
+        except:
+            pass
+    
         if data:
             self._logger.warning(f"messages - str({data})")
         
