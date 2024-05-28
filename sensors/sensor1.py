@@ -59,7 +59,7 @@ class HelloSensor(PollingSensor):
 
     def poll(self):
         try:
-            while True
+            while True:
                 self.connection.drain_events(timeout=2)
         except:
             pass
