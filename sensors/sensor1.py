@@ -21,7 +21,7 @@ from random import randint
 from kombu import Connection, Exchange, Queue, Consumer, Producer
 from st2common.transport import utils as transport_utils
 
-        
+data = []        
 class HelloSensor(Sensor):  
     def __init__(self, sensor_service, config):
         super(HelloSensor, self).__init__(sensor_service=sensor_service, config=config)
@@ -47,7 +47,10 @@ class HelloSensor(Sensor):
         self.consumer.consume()
 
     def process_message(self, body, message):
+        global data
+        data.append(body)
         print("body is {body}. time is {datetime.now()}")
+            
 #        payload = {"message_body": "{body}"}
 #        self.sensor_service.dispatch(trigger="test.event2", payload=payload, trace_tag="tag123")
 #        self.producer.publish(body)
@@ -55,12 +58,15 @@ class HelloSensor(Sensor):
         message.ack()
 
     def run(self):
-        while True:
+        for each in range(0,2):
             self.connection.drain_events()
-            eventlet.sleep(20)
+        if data:
+            self._logger.warning(f"messages - str(data)")
+        
 
     def cleanup(self):
-        pass
+        print("releasing connection")
+        self.connection.release()
 
     # Methods required for programmable sensors.
     def add_trigger(self, trigger):
