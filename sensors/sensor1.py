@@ -49,7 +49,7 @@ class HelloSensor(Sensor):
     def process_message(self, body, message):
         global data
         data.append(body)
-        print("body is {body}. time is {datetime.now()}")
+        print(f"body is {body}. time is {datetime.now()}")
             
 #        payload = {"message_body": "{body}"}
 #        self.sensor_service.dispatch(trigger="test.event2", payload=payload, trace_tag="tag123")
@@ -61,7 +61,7 @@ class HelloSensor(Sensor):
         for each in range(0,2):
             self.connection.drain_events()
         if data:
-            self._logger.warning(f"messages - str(data)")
+            self._logger.warning(f"messages - str({data})")
         
 
     def cleanup(self):
