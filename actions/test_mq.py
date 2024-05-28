@@ -19,12 +19,12 @@ class TestMq(Action):
     
     def run(self, message):   
         exchange = Exchange('', type="direct")
-#        publisher = PoolPublisher()
-#        a = publisher.publish(payload=message, exchange=exchange, routing_key='salt_jobs')
-        
-        rabbit_url = "amqp://guest:guest@rabbitmq:5672"
-        conn = Connection(rabbit_url)
-        queue = Queue(name="salt_finished", exchange=exchange, routing_key="salt_finished")
-        with Consumer(conn, queues=queue, callbacks=[self.process_message], accept=['application/json', 'application/x-python-serialize', 'pickle', 'text/plain']):
-            conn.drain_events()
-        return output
+        publisher = PoolPublisher()
+        a = publisher.publish(payload=message, exchange=exchange, routing_key='salt_jobs')
+        return "message published"
+ #       rabbit_url = "amqp://guest:guest@rabbitmq:5672"
+ #       conn = Connection(rabbit_url)
+ #       queue = Queue(name="salt_finished", exchange=exchange, routing_key="salt_finished")
+ #       with Consumer(conn, queues=queue, callbacks=[self.process_message], accept=['application/json', 'application/x-python-serialize', 'pickle', 'text/plain']):
+ #           conn.drain_events()
+ #       return output
