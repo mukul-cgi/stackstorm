@@ -23,7 +23,7 @@ from st2common.transport import utils as transport_utils
 
 data = []        
 class HelloSensor(PollingSensor):  
-    def __init__(self, sensor_service, config):
+    def __init__(self, sensor_service, config, poll_interval):
         super(HelloSensor, self).__init__(sensor_service=sensor_service, config=config)
         self._logger = self.sensor_service.get_logger(name=self.__class__.__name__)
 #    def setup(self):            
