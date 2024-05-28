@@ -41,7 +41,7 @@ class HelloSensor(Sensor):
     def setup(self):
         exchange = Exchange("", type="direct")
         self.queue = Queue(name="salt_jobs", exchange=exchange, routing_key="salt_jobs")
-        self.connection = transport_utils.get_connection():
+        self.connection = transport_utils.get_connection()
         self.connection.connect()
         self.consumer = Consumer(self.connection, queues=self.queue, callbacks=[self.process_message], accept=['application/json', 'application/x-python-serialize', 'pickle'])
         self.consumer.consume()
