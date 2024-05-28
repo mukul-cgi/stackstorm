@@ -47,7 +47,7 @@ class HelloSensor(Sensor):
         self.consumer.consume()
 
     def process_message(self, body, message):
-        print("body is {body}")
+        print("body is {body}. time is {datetime.now()}")
 #        payload = {"message_body": "{body}"}
 #        self.sensor_service.dispatch(trigger="test.event2", payload=payload, trace_tag="tag123")
 #        self.producer.publish(body)
