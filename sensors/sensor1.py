@@ -20,6 +20,7 @@ import os
 from random import randint
 from kombu import Connection, Exchange, Queue, Consumer, Producer
 from st2common.transport import utils as transport_utils
+import time
 
 data = []        
 class HelloSensor(PollingSensor):  
@@ -58,6 +59,7 @@ class HelloSensor(PollingSensor):
         message.ack()
 
     def poll(self):
+        self._logger.info(f"running poll function")        
         try:
             while True:
                 self.connection.drain_events(timeout=2)
@@ -66,7 +68,8 @@ class HelloSensor(PollingSensor):
     
         if data:
             self._logger.warning(f"messages - str({data})")
-        
+        self._logger.info(f"sleeping poll for 20")
+        time.sleep(20)
 
     def cleanup(self):
         print("releasing connection")
