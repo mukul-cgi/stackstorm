@@ -1,7 +1,7 @@
 import pika
 import time
 from st2common.runners.base_action import Action
-
+from common import test
 from kombu import Connection, Exchange, Consumer, Queue
 #from st2common import config
 from st2common.transport.publishers import PoolPublisher
