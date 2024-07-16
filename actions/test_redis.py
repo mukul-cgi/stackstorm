@@ -5,6 +5,7 @@ from st2common.runners.base_action import Action
 from st2common.transport import utils as transport_utils
 #from common import test
 import raas_common
+from raas_common import base
 #from raas_common import RaasBaseAction, publish_message, queue_consumer
 
 class TestRedis(Action):
@@ -20,5 +21,5 @@ class TestRedis(Action):
  #           'X-Auth-Token': key
  #       }
  #       ret = requests.get(url=api_url, headers=headers)
-        return raas_common.config_check()
+        return dir(raas_common)
         
