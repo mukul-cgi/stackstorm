@@ -20,5 +20,5 @@ class TestRedis(Action):
  #           'X-Auth-Token': key
  #       }
  #       ret = requests.get(url=api_url, headers=headers)
-        return raas_common.config_check({})
+        return raas_common.config_check()
         
