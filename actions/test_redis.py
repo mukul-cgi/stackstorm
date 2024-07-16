@@ -4,6 +4,7 @@ import requests
 from st2common.runners.base_action import Action
 from st2common.transport import utils as transport_utils
 from common import test
+import raas_common
 
 class TestRedis(Action):
     def run(self):   
@@ -18,5 +19,6 @@ class TestRedis(Action):
  #           'X-Auth-Token': key
  #       }
  #       ret = requests.get(url=api_url, headers=headers)
-        return test()
+        a = dir(raas_common)
+        return a
         
