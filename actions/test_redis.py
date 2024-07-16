@@ -4,7 +4,7 @@ import requests
 from st2common.runners.base_action import Action
 from st2common.transport import utils as transport_utils
 #from common import test
-import raas_common
+from raas_common import RaasBaseAction, publish_message, queue_consumer
 
 class TestRedis(Action):
     def run(self):   
